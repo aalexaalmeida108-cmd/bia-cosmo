@@ -170,10 +170,11 @@ p{margin:0 0 1em}
   .hero__fig img{aspect-ratio:4/5}
   .hero__fig figcaption{left:10px;right:10px;bottom:10px;padding:10px 12px}
   .hero__fig strong{font-size:.95rem}
-  .hero__fig span{font-size:.72rem}
+  .hero__fig a{font-size:.72rem}
 }
 .hero__fig strong{font-family:"Fraunces",serif;font-size:1.05rem;font-weight:600}
-.hero__fig span{font-size:.8rem;color:var(--gold);font-weight:600}
+.hero__fig a{font-size:.8rem;color:var(--gold);font-weight:600;text-decoration:none;transition:opacity .18s ease}
+.hero__fig a:hover{opacity:.75}
 
 /* ---------- strip ---------- */
 .strip{border-block:1px solid var(--line-2);background:var(--paper)}
