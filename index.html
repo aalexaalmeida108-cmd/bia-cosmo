@@ -187,7 +187,7 @@
 
       <div class="serv-detalhe">
         <div class="srvs-grid">
-          <article class="srv reveal">
+          <article class="srv reveal" style="background-image:url('img/srv-brow-lamination.jpg')">
             <span class="srv__ico">🌀</span>
             <h3>Brow Lamination</h3>
             <p class="srv__desc">Alinha e fixa os fios na direção ideal, criando volume e definição naturais — efeito "penteado" que dura semanas.</p>
@@ -198,9 +198,10 @@
               <li>Sem dor, sem agulhas</li>
             </ul>
             <span class="srv__tag">Ideal para fios rebeldes ou ralos</span>
+            <button class="srv__zoom" aria-label="Ampliar foto" data-full="img/srv-brow-lamination.jpg">🔍</button>
           </article>
 
-          <article class="srv reveal">
+          <article class="srv reveal" style="background-image:url('img/srv-design.jpg')">
             <span class="srv__ico">✏️</span>
             <h3>Design de Sobrancelhas</h3>
             <p class="srv__desc">Mapeamento facial preciso (medição áurea) para desenhar o formato que harmoniza com seu rosto — a base de tudo.</p>
@@ -211,9 +212,10 @@
               <li>Retoque rápido e indolor</li>
             </ul>
             <span class="srv__tag">Obrigatório antes de micropigmentar</span>
+            <button class="srv__zoom" aria-label="Ampliar foto" data-full="img/srv-design.jpg">🔍</button>
           </article>
 
-          <article class="srv reveal">
+          <article class="srv reveal" style="background-image:url('img/srv-hidragloss.jpg')">
             <span class="srv__ico">💧</span>
             <h3>Hidragloss Labial</h3>
             <p class="srv__desc">Hidratação profunda + brilho espelhado nos lábios. Tratamento que nutre, revitaliza e dá acabamento glossy imediato aos lábios.</p>
@@ -224,9 +226,10 @@
               <li>Pode combinar com design ou lamination</li>
             </ul>
             <span class="srv__tag">Tratamento + beleza imediata</span>
+            <button class="srv__zoom" aria-label="Ampliar foto" data-full="img/srv-hidragloss.jpg">🔍</button>
           </article>
 
-          <article class="srv reveal">
+          <article class="srv reveal" style="background-image:url('img/srv-lash-lifting.jpg')">
             <span class="srv__ico">👁️</span>
             <h3>Lash Lifting</h3>
             <p class="srv__desc">Curvatura e levantamento dos cílios naturais — olhar aberto, alongado e expressivo, sem extensões nem manutenção diária.</p>
@@ -237,9 +240,10 @@
               <li>Acorda pronta todo dia</li>
             </ul>
             <span class="srv__tag">Alternativa natural às extensões</span>
+            <button class="srv__zoom" aria-label="Ampliar foto" data-full="img/srv-lash-lifting.jpg">🔍</button>
           </article>
 
-          <article class="srv srv--destaque reveal">
+          <article class="srv srv--destaque reveal" style="background-image:url('img/srv-micropigmentacao.jpg')">
             <span class="srv__ico">🖌️</span>
             <h3>Micropigmentação</h3>
             <p class="srv__desc">Nanofios (fio a fio hiper-realista) ou Efeito Shadow (sombreado suave) — pigmento implantado na pele para preencher, definir e corrigir.</p>
@@ -250,6 +254,7 @@
               <li>Acorda com sobrancelhas prontas</li>
             </ul>
             <span class="srv__tag">De R$ 500 por R$ 350 — oferta vigente</span>
+            <button class="srv__zoom" aria-label="Ampliar foto" data-full="img/srv-micropigmentacao.jpg">🔍</button>
           </article>
         </div>
       </div>
@@ -539,7 +544,12 @@
   <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path fill="#fff" d="M16 3C9.4 3 4 8.4 4 15c0 2.3.6 4.4 1.8 6.3L4 29l7.9-1.8c1.8 1 3.9 1.6 6.1 1.6 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.9 0-3.7-.5-5.3-1.5l-.4-.2-4.7 1.1 1.2-4.5-.3-.4A9.7 9.7 0 016.2 15C6.2 9.6 10.6 5.2 16 5.2S25.8 9.6 25.8 15 21.4 24.8 16 24.8zm5.4-7.2c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-1.4-.7-2.4-1.3-3.3-2.9-.3-.4.3-.4.8-1.3.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.3 5.2 4.6 1.9.8 2.7.9 3.6.8.6-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>
 </a>
 
-<script>
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox__close" id="lightboxClose" aria-label="Fechar">✕</button>
+    <img src="" alt="Foto ampliada" id="lightboxImg" />
+  </div>
+
+  <script>
   document.getElementById('ano').textContent = new Date().getFullYear();
 
   var burger = document.getElementById('burger');
@@ -584,6 +594,33 @@
     }, { threshold: 0.5 });
     vids.forEach(function (v) { vio.observe(v); });
   }
+
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  document.querySelectorAll('.srv__zoom').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      lightboxImg.src = btn.getAttribute('data-full');
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+
+  function closeLightbox() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
