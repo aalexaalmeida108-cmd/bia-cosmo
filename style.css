@@ -239,6 +239,44 @@ p{margin:0 0 1em}
 .work__main strong{font-family:"Fraunces",serif;font-size:1.12rem;font-weight:600}
 .work__main span{font-size:.88rem;color:var(--muted)}
 
+/* ---------- servicos detalhe ---------- */
+.serv-detalhe{margin-bottom:clamp(24px,4vw,40px)}
+.serv-detalhe .sec-head{margin-bottom:clamp(24px,4vw,40px)}
+.srvs-grid{display:grid;gap:18px;grid-template-columns:1fr}
+@media (min-width:760px){ .srvs-grid{grid-template-columns:repeat(2,1fr)} }
+@media (min-width:1060px){ .srvs-grid{grid-template-columns:repeat(3,1fr)} }
+
+.srv{
+  background:var(--paper);border:1px solid var(--line-2);border-radius:20px;
+  padding:28px 24px;display:flex;flex-direction:column;
+  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.srv:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--line)}
+.srv__ico{font-size:2.2rem;line-height:1;margin-bottom:16px;display:block}
+.srv h3{font-size:1.35rem;margin-bottom:.6em}
+.srv__desc{font-size:.95rem;color:var(--ink-2);margin:0 0 18px;line-height:1.6}
+.srv__benef{
+  list-style:none;margin:0 0 18px;padding:0;display:grid;gap:8px;
+}
+.srv__benef li{
+  position:relative;padding-left:1.6em;font-size:.9rem;color:var(--ink-2);
+}
+.srv__benef li::before{
+  content:"";position:absolute;left:0;top:.45em;
+  width:.85em;height:.85em;border-radius:50%;
+  background:var(--gold-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-5' fill='none' stroke='%23b8894a' stroke-width='1.7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/65% no-repeat;
+}
+.srv__tag{
+  align-self:flex-start;font-size:.73rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--gold);background:var(--gold-soft);padding:.42em .85em;border-radius:999px;
+  margin-top:auto;
+}
+.srv--destaque{background:var(--ink);border-color:var(--ink);color:#fff}
+.srv--destaque .srv__desc{color:rgba(255,255,255,.75)}
+.srv--destaque .srv__benef li{color:rgba(255,255,255,.7)}
+.srv--destaque .srv__tag{background:rgba(255,255,255,.12);color:var(--gold-2)}
+.srv--destaque:hover{border-color:var(--ink)}
+
 /* ---------- galeria ---------- */
 .galeria{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
 @media (min-width:760px){ .galeria{grid-template-columns:repeat(3,1fr)} }
